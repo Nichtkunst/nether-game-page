@@ -10,18 +10,21 @@
     "@emotion/styled": "10.0.27",
     "@react-firebase/database": "0.3.11",
     "@react-firebase/firestore": "0.5.5",
+    "@types/lodash": "^4.14.149",
+    "@types/react-router-dom": "^5.1.3",
     "emotion-theming": "10.0.27",
-    "firebase": "7.6.2",
+    "firebase": "7.7.0",
     "lodash": "4.17.15",
-    "react": "16.8.4",
-    "react-dom": "16.8.4",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
     "react-router-dom": "5.1.2",
-    "react-scripts": "2.1.3"
+    "react-scripts": "3.3.0"
   },
   "devDependencies": {
-    "@types/react": "16.8.8",
-    "@types/react-dom": "16.8.2",
-    "typescript": "3.3.3"
+    "@types/react": "16.9.17",
+    "@types/react-dom": "16.9.4",
+    "prettier": "1.19.1",
+    "typescript": "3.7.5"
   },
   "scripts": {
     "start": "react-scripts start",

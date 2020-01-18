@@ -1,18 +1,5 @@
-import { uniqueId } from "lodash";
 import React from "react";
-import {
-  Flex,
-  SimpleGrid,
-  Box,
-  Stack,
-  Heading,
-  Text,
-  Badge,
-  Grid,
-  Spinner,
-  Avatar,
-  CircularProgress
-} from "@chakra-ui/core";
+import { Box, Stack, Heading, Text, Avatar } from "@chakra-ui/core";
 
 interface BestPlayer {
   Name: string;
@@ -44,9 +31,17 @@ const PlayerCard = (props: { player: any }) => {
   );
 };
 
-const PlayerCardList = (props: { value: [0] }) => {
-  const { value, ...restProps } = props;
-  const rankingList = Object.entries(value[0]);
+interface RankingList {
+  path: string;
+  ids: string[];
+  value: any;
+}
+
+const PlayerCardList = (props: { data: RankingList }) => {
+  const { data, ...restProps } = props;
+  // const { value, path, ids } = data;
+  const rankingList = Object.entries(data.value[0]);
+  console.log("rankingList", rankingList);
   return rankingList.map((player: any) => (
     <PlayerCard player={player} {...restProps} />
   ));

@@ -17,7 +17,7 @@ ReactDOM.render(
       <hr />
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
       <Route path={ROUTES.HOME} component={HomePage} />
-      <Route path={ROUTES.BEST_PLAYERS} component={BestPlayersPage} />
+      <Route path={ROUTES.RANKING} component={BestPlayersPage} />
     </Router>
   </App>,
   document.getElementById("root")

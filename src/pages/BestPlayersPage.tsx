@@ -1,4 +1,3 @@
-import { uniqueId } from "lodash";
 import React from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
@@ -7,73 +6,60 @@ import {
   FirestoreProvider
 } from "@react-firebase/firestore";
 import {
+  Flex,
   Box,
+  SimpleGrid,
   Stack,
-  Heading,
-  Text,
-  Badge,
-  Grid,
-  Avatar,
-  CircularProgress
+  Spinner,
+  Heading
 } from "@chakra-ui/core";
 import firebaseConfig from "../firebaseConfig";
+import PlayerCardList from "../components/PlayerCardList";
+import { uniqueId } from "lodash";
 
-const s = (a: any) => JSON.stringify(a);
-
-/* db.collection('ArenaTop').doc('List').get().then(query => {
-
-  const list = query.data();
-  for(let ind in list) {
-      //blablabla
-  }
-} */
-
-const BestPlayersPage = () => {
+const BestPlayersPage = (props: any) => {
   return (
-    <Grid templateColumns="repeat(2, 1fr)" gap={6} padding={4}>
+    <SimpleGrid p={3} columns={1} spacing={2} {...props}>
       <FirestoreProvider {...firebaseConfig} firebase={firebase}>
-        <BestPlayersList />
+        <Stack spacing={8} {...props}>
+          <BestPlayersList />
+        </Stack>
       </FirestoreProvider>
-    </Grid>
+    </SimpleGrid>
   );
 };
 
-const PlayerCardList = ({ value, ...rest }) => {
-  const list = Object.entries(value[0]);
-  const listNew = list.map(list => list[1]);
-  console.log("list", listNew[0].Name);
-  return list.map(listNew => (
-    <Box
-      p={5}
-      borderRadius={4}
-      shadow="md"
-      borderWidth="1px"
-      marginTop={4}
-      key={uniqueId(listNew.Name)}
-      {...rest}
-    >
-      <Avatar name="Some Player" src="https://bit.ly/dan-abramov" />
-      <Heading fontSize="xl">{listNew[1].Name}</Heading>
-      <Text mt={2}>Arena: {listNew[1].Arena}</Text>
-      <Badge variantColor="green">Rang {listNew[1].Rank}</Badge>
-    </Box>
-  ));
-};
-
-const BestPlayersList = ({ ...rest }) => (
-  <Stack spacing={8}>
-    <FirestoreCollection path={"ArenaTop"} doc={"List"} orderByKey>
-      {d => {
-        return d.isLoading ? (
-          <CircularProgress />
-        ) : (
-          <PlayerCardList value={d.value} />
-        );
-      }}
-    </FirestoreCollection>
-  </Stack>
+const BestPlayersList = (props: any) => (
+  <FirestoreCollection path={"ArenaTop"}>
+    {data => {
+      return data.isLoading ? (
+        <Flex py={3}>
+          <Spinner mx="auto" />
+        </Flex>
+      ) : (
+        <>
+          <Box p={5} rounded="md" shadow="md" borderWidth="1px" marginTop={4}>
+            <Stack isInline align="center" spacing={8} {...props}>
+              <Heading as="h2" size="md">
+                Rank
+              </Heading>
+              <Heading as="h2" size="md">
+                Player
+              </Heading>
+              <Heading as="h2" size="md">
+                Nickname
+              </Heading>
+              <Heading as="h2" size="md">
+                Arena
+              </Heading>
+            </Stack>
+          </Box>
+          // @ts-ignore
+          <PlayerCardList value={data.value} />
+        </>
+      );
+    }}
+  </FirestoreCollection>
 );
-
-// <PlayerCard ids={ids} value={value} />
 
 export default BestPlayersPage;

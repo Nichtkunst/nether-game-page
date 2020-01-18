@@ -1,23 +1,23 @@
 import React from "react";
+// @ts-ignore
 import { Link } from "react-router-dom";
-import {
-  Flex,
-  Box,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel
-} from "@chakra-ui/core";
+import { Flex, Box, Button } from "@chakra-ui/core";
 
 import * as ROUTES from "../routes";
 
 const Navigation = () => (
-  <Flex px={2} color="white" bg="black" alignItems="center">
-    <Link to={ROUTES.LANDING}>Landing Page</Link>
+  <Flex p={3} bg="teal" alignItems="center">
+    <Button variantColor="teal" size="lg" variant="ghost">
+      <Link to={ROUTES.LANDING}>Landing Page</Link>
+    </Button>
     <Box mx="auto" />
-    <Link to={ROUTES.HOME}>Home</Link>
-    <Link to={ROUTES.BEST_PLAYERS}>Best Players</Link>
+    <Button variantColor="teal" size="lg">
+      <Link to={ROUTES.RANKING}>Ranking</Link>
+    </Button>
+    <Box mx="auto" />
+    <Button variantColor="teal" size="lg" variant="ghost">
+      <Link to={ROUTES.HOME}>Home</Link>
+    </Button>
   </Flex>
 );
 

@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import App from "./App";
 import Navigation from "./components/Navigation";
-import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import BestPlayersPage from "./pages/BestPlayersPage";
 
@@ -15,7 +14,7 @@ ReactDOM.render(
     <Router>
       <Navigation />
       <hr />
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
+      <Route exact path={ROUTES.LANDING} component={HomePage} />
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.RANKING} component={BestPlayersPage} />
     </Router>

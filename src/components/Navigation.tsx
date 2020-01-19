@@ -5,20 +5,23 @@ import { Flex, Box, Button } from "@chakra-ui/core";
 
 import * as ROUTES from "../routes";
 
-const Navigation = () => (
-  <Flex p={3} bg="teal" alignItems="center">
-    <Button variantColor="teal" size="lg" variant="ghost">
-      <Link to={ROUTES.LANDING}>Landing Page</Link>
-    </Button>
-    <Box mx="auto" />
-    <Button variantColor="teal" size="lg">
-      <Link to={ROUTES.RANKING}>Ranking</Link>
-    </Button>
-    <Box mx="auto" />
-    <Button variantColor="teal" size="lg" variant="ghost">
-      <Link to={ROUTES.HOME}>Home</Link>
-    </Button>
-  </Flex>
-);
+const Navigation = () => {
+  // const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <Flex p={3} alignItems="center">
+      <Button rounded="md" size="md" variant="outline">
+        <Link to={ROUTES.HOME}>Home</Link>
+      </Button>
+      <Box mx="auto" />
+      <Button rounded="md" size="md" variant="solid">
+        <Link to={ROUTES.RANKING}>Ranking</Link>
+      </Button>
+      {/* <Box mx="auto" />
+       <Button onClick={toggleColorMode} size="lg" variant="ghost">
+        Toggle {colorMode === "light" ? "Dark" : "Light"}
+      </Button> */}
+    </Flex>
+  );
+};
 
 export default Navigation;

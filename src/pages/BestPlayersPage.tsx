@@ -5,26 +5,19 @@ import {
   FirestoreCollection,
   FirestoreProvider
 } from "@react-firebase/firestore";
-import {
-  Flex,
-  Box,
-  SimpleGrid,
-  Stack,
-  Spinner,
-  Heading
-} from "@chakra-ui/core";
+import { Flex, Stack, Spinner, Grid } from "@chakra-ui/core";
 import firebaseConfig from "../firebaseConfig";
 import PlayerCardList from "../components/PlayerCardList";
 
 const BestPlayersPage = (props: any) => {
   return (
-    <SimpleGrid p={3} columns={1} spacing={2} {...props}>
+    <Grid templateColumns="repeat(1, 1fr)" gap={6} padding={4} {...props}>
       <FirestoreProvider {...firebaseConfig} firebase={firebase}>
         <Stack spacing={8}>
           <BestPlayersList />
         </Stack>
       </FirestoreProvider>
-    </SimpleGrid>
+    </Grid>
   );
 };
 
@@ -38,26 +31,8 @@ const BestPlayersList = (props: any) => {
             <Spinner mx="auto" />
           </Flex>
         ) : (
-          <>
-            <Box p={5} rounded="md" shadow="md" borderWidth="1px" marginTop={4}>
-              <Stack isInline align="center" spacing={8}>
-                <Heading as="h2" size="md">
-                  Rank
-                </Heading>
-                <Heading as="h2" size="md">
-                  Player
-                </Heading>
-                <Heading as="h2" size="md">
-                  Nickname
-                </Heading>
-                <Heading as="h2" size="md">
-                  Arena
-                </Heading>
-              </Stack>
-            </Box>
-            // @ts-ignore
-            <PlayerCardList data={data} />
-          </>
+          // @ts-ignore
+          <PlayerCardList data={data} />
         );
       }}
     </FirestoreCollection>

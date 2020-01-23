@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import App from "./App";
+import App from "./app";
 import Navigation from "./components/Navigation";
 import HomePage from "./pages/HomePage";
 import BestPlayersPage from "./pages/BestPlayersPage";
